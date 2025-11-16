@@ -1,17 +1,25 @@
-import java.io.*;
-
 //Write a Java Program to copy one file into another file.
-
+import java.io.*;
 public class W13Q3 {
-    public static void main(String[] args) throws Exception {
-        FileReader fr = new FileReader("file1.txt");
-        FileWriter fw = new FileWriter("file2.txt");
-        int c = fr.read();
-        while(c>=0) {
-            fw.write((char)c);
-            c = fr.read();
+    public static void main(String[] args) throws IOException
+    {
+        try{
+            BufferedReader freader = new BufferedReader(new FileReader("A.txt"));
+            BufferedWriter fwriter = new BufferedWriter(new FileWriter("B.txt"));
+
+            String line;
+
+            while ((line = freader.readLine()) != null){
+                fwriter.write(line);
+            }
+            freader.close();
+            fwriter.close();
+
+            System.out.println("File copied successfully!");
         }
-        fr.close();
-        fw.close();
+        catch (IOException e){
+            System.out.println("Unable to do so!");
+        }
     }
 }
+
