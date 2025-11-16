@@ -1,17 +1,21 @@
+//Write a java program to find total no. of characters in a file.
 import java.io.*;
-
-//Write a java program to find total no. of characters in a file
-
 public class W13Q4 {
-    public static void main(String[] args) throws Exception {
-        FileReader fr = new FileReader("file.txt");
-        int c = fr.read();
-        int counter = 0;
-        while(c>=0) {
-            counter++;
-            c = fr.read();
+    public static void main(String[] args) throws IOException
+    {
+        int count=0;
+        try{
+            FileReader fr = new FileReader("b.txt");
+            int c;
+            while((c=fr.read())!= -1){ // read each character
+                count++; // count it
+            }
+            System.out.print("Number of characters: "+count);
+            fr.close();
         }
-        fr.close();
-        System.out.println("No. of character: "+counter);
+        catch (IOException e) {
+            System.out.println("Error!");
+        }
     }
 }
+
